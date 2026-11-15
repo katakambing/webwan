@@ -1,0 +1,65 @@
+﻿@{
+    ViewData["Title"] = "Lab 1 Dashboard";
+}
+
+<div class="text-center mb-4">
+    <h1 class="display-6 fw-bold">ISB 42403 — Lab 1 Applications</h1>
+    <p class="text-muted">Select any application below to test:</p>
+</div>
+
+<div class="row g-3">
+    <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">1. BMI Calculator</h5>
+                <p class="card-text text-muted">Calculate Body Mass Index from weight and height.</p>
+                <a asp-controller="BMI" asp-action="BMICalculator" class="btn btn-primary">Open BMI</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">2. Temperature Converter</h5>
+                <p class="card-text text-muted">Convert between Celsius and Fahrenheit.</p>
+                <a asp-controller="Temp" asp-action="TempView" class="btn btn-primary">Open Temp</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">3. Grade Calculator</h5>
+                <p class="card-text text-muted">Calculate overall mark and letter grade.</p>
+                <a asp-controller="Grade" asp-action="Index" class="btn btn-primary">Open Grade</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">4. MCQ App</h5>
+                <p class="card-text text-muted">Multiple choice selection using radio buttons.</p>
+                <a asp-controller="MCQ" asp-action="MCQView" class="btn btn-primary">Open MCQ</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">5. Favourite Pet</h5>
+                <p class="card-text text-muted">Select a pet and image size from wwwroot/img.</p>
+                <a asp-controller="FavouritePet" asp-action="FavouritePetView" class="btn btn-primary">Open Pet</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">6. Electricity Bill</h5>
+                <p class="card-text text-muted">Calculate electricity tariff charges by category.</p>
+                <a asp-controller="Electricity" asp-action="ElectricityView" class="btn btn-primary">Open Bill</a>
+            </div>
+        </div>
+    </div>
+</div>

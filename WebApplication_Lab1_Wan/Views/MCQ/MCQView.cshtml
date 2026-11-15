@@ -1,0 +1,33 @@
+@model WebApplication_Lab1_Wan.Models.MCQModel
+
+@{
+    ViewData["Title"] = "MCQ App";
+}
+
+<h2>Multiple Choice Question</h2>
+
+<form method="post" asp-action="MCQView">
+    <div class="mb-3">
+        <p><strong>Select your choice:</strong></p>
+        <input type="radio" asp-for="SelectedAnswer" value="Cat" id="cat" />
+        <label for="cat">Cat</label><br />
+
+        <input type="radio" asp-for="SelectedAnswer" value="Dog" id="dog" />
+        <label for="dog">Dog</label><br />
+
+        <input type="radio" asp-for="SelectedAnswer" value="Rabbit" id="rabbit" />
+        <label for="rabbit">Rabbit</label><br />
+
+        <input type="radio" asp-for="SelectedAnswer" value="Bird" id="bird" />
+        <label for="bird">Bird</label>
+    </div>
+    <input type="submit" value="Submit" class="btn btn-primary" />
+</form>
+
+<br />
+@if (Model != null && !string.IsNullOrEmpty(Model.ResultMessage))
+{
+    <div>
+        <h3>@Model.ResultMessage</h3>
+    </div>
+}

@@ -1,0 +1,30 @@
+@model WebApplication_Lab1_Wan.Models.TempModel
+
+@{
+    ViewData["Title"] = "Temperature Converter";
+}
+
+<h2>Temperature Converter</h2>
+
+<form method="post" asp-action="TempView">
+    <div class="mb-3">
+        <label class="form-label">Insert temperature:</label>
+        <input asp-for="Temperature" type="text" class="form-control" style="max-width: 350px;" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Select conversion type:</label>
+        <select asp-for="ConversionType" class="form-select" style="max-width: 350px;">
+            <option value="FtoC">Fahrenheit to Celsius</option>
+            <option value="CtoF">Celsius to Fahrenheit</option>
+        </select>
+    </div>
+    <input type="submit" value="Convert" class="btn btn-primary" />
+</form>
+
+<br />
+<div>
+    <h3>
+        Converted Result:
+        @(Model != null ? Model.Result.ToString("0.00") : "")
+    </h3>
+</div>
