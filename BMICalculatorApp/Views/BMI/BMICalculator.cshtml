@@ -1,0 +1,25 @@
+﻿@model BMICalculatorApp.Models.BMI
+
+<h2>BMI Calculator</h2>
+
+<!-- Form submission -->
+<form asp-action="BMICalculator" method="post">
+    <div>
+        <label asp-for="Weight">Weight (kg):</label><br />
+        <input asp-for="Weight" type="number" step="any" required />
+    </div>
+    <br />
+    <div>
+        <label asp-for="Height">Height (meters, e.g. 1.75):</label><br />
+        <input asp-for="Height" type="number" step="any" required />
+    </div>
+    <br />
+    <button type="submit">Calculate BMI</button>
+</form>
+
+<br />
+<!-- Display result -->
+@if (Model != null && Model.Result > 0)
+{
+    <h3>Result: @Model.Result.ToString("0.00")</h3>
+}
