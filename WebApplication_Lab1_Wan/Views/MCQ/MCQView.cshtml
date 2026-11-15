@@ -1,25 +1,21 @@
-@model WebApplication_Lab1_Wan.Models.MCQModel
-
 <h3>Multiple Choice Question App</h3>
 
-<form method="post" asp-action="MCQView">
+<form asp-action="MCQView" method="post">
     <p>
         Which of the following is a server-side programming language?<br />
-        <input type="radio" asp-for="SelectedAnswer" value="a" /> HTML <br />
-        <input type="radio" asp-for="SelectedAnswer" value="b" /> JavaScript <br />
-        <input type="radio" asp-for="SelectedAnswer" value="c" /> C# <br />
-        <input type="radio" asp-for="SelectedAnswer" value="d" /> CSS <br />
-        <input type="radio" asp-for="SelectedAnswer" value="e" /> AJAX <br />
+        <input type="radio" name="Answer" value="a" /> HTML <br />
+        <input type="radio" name="Answer" value="b" /> JavaScript <br />
+        <input type="radio" name="Answer" value="c" /> C# <br />
+        <input type="radio" name="Answer" value="d" /> CSS <br />
+        <input type="radio" name="Answer" value="e" /> AJAX <br />
     </p>
-    <input type="submit" value="submit answer" />
+    <input type="submit" value="Submit" />
 </form>
 
 <br />
 
-@if (Model != null && !string.IsNullOrEmpty(Model.SelectedAnswer))
-{
-    <p>
-        Selected item value: @Model.SelectedAnswer <br />
-        @Model.ResultMessage
-    </p>
-}
+<p>
+    Selected item index is: @ViewBag.IndexBag <br />
+    Selected item value is: @ViewBag.AnswerBag <br />
+    Selected item Text is: @ViewBag.NameBag
+</p>

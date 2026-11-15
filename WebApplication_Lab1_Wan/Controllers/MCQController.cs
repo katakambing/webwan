@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using WebApplication_Lab1_Wan.Models;
 
 namespace WebApplication_Lab1_Wan.Controllers
 {
@@ -12,10 +11,18 @@ namespace WebApplication_Lab1_Wan.Controllers
         }
 
         [HttpPost]
-        public IActionResult MCQView(MCQModel model)
+        public IActionResult MCQView(string Answer)
         {
-            model.CheckAnswer();
-            return View(model);
+            ViewBag.AnswerBag = Answer;
+
+            string[] answersArray = { "a", "b", "c", "d", "e" };
+            int index = Array.IndexOf(answersArray, Answer);
+            ViewBag.IndexBag = index;
+
+            string[] nameArray = { "HTML", "JavaScript", "C#", "CSS", "AJAX" };
+            ViewBag.NameBag = index >= 0 ? nameArray[index] : "";
+
+            return View();
         }
     }
 }
