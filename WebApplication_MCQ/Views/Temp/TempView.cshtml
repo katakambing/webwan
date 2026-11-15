@@ -1,0 +1,29 @@
+﻿@model WebApplication_TempConverter.Models.TempModel
+
+<h2>Temperature Converter</h2>
+
+<form method="post" asp-action="TempView">
+    <div>
+        <label>Insert temperature:</label><br />
+        <input asp-for="Temperature" type="text" />
+    </div>
+    <br />
+    <div>
+        <label>Select conversion type:</label><br />
+        <select asp-for="ConversionType">
+            <option value="FtoC">Fahrenheit to Celsius</option>
+            <option value="CtoF">Celsius to Fahrenheit</option>
+        </select>
+    </div>
+    <br />
+    <input type="submit" value="Convert" />
+</form>
+
+<br />
+
+<div>
+    <h3>
+        Converted Result:
+        @(Model != null ? Model.Result.ToString("0.00") : "")
+    </h3>
+</div>

@@ -1,0 +1,10 @@
+# Visual Studio / .NET build artifacts
+bin/
+obj/
+.vs/
+*.user
+*.suo
+*.cache
+TestResults/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,31 @@
+﻿@model WebApplication_MCQ.Models.MCQModel
+
+<h2>Multiple Choice / Favourite Pet Selection</h2>
+
+<form method="post" asp-action="MCQView">
+    <div>
+        <p><strong>Select your choice:</strong></p>
+        <input type="radio" asp-for="SelectedAnswer" value="Cat" id="cat" />
+        <label for="cat">Cat</label><br />
+
+        <input type="radio" asp-for="SelectedAnswer" value="Dog" id="dog" />
+        <label for="dog">Dog</label><br />
+
+        <input type="radio" asp-for="SelectedAnswer" value="Rabbit" id="rabbit" />
+        <label for="rabbit">Rabbit</label><br />
+
+        <input type="radio" asp-for="SelectedAnswer" value="Bird" id="bird" />
+        <label for="bird">Bird</label>
+    </div>
+    <br />
+    <input type="submit" value="Submit" />
+</form>
+
+<br />
+
+@if (Model != null && !string.IsNullOrEmpty(Model.ResultMessage))
+{
+    <div>
+        <h3>@Model.ResultMessage</h3>
+    </div>
+}
