@@ -14,7 +14,7 @@ namespace WebApplication_Lab1_Wan.Controllers
         [HttpPost]
         public IActionResult TempView(TempModel temp)
         {
-            temp.ConvertTemperature();
+            temp.CalculateTemperature();
             return View(temp);
         }
     }

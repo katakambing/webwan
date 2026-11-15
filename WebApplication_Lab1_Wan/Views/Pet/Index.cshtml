@@ -1,0 +1,50 @@
+@model WebApplication_Lab1_Wan.Models.Pet
+
+@{
+    ViewData["Title"] = "Favourite Pet";
+}
+
+<h2>Favourite Pet</h2>
+<hr />
+
+<form asp-action="Index" method="post">
+    <div class="mb-3">
+        <label asp-for="OwnerName" class="form-label">Owner Name:</label>
+        <input asp-for="OwnerName" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="PetName" class="form-label">Pet Name:</label>
+        <input asp-for="PetName" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Choose Favourite Animal:</label><br />
+
+        <input type="radio" asp-for="SelectedAnimal" value="Dog" id="dog" required />
+        <label for="dog">Dog</label><br />
+
+        <input type="radio" asp-for="SelectedAnimal" value="Cat" id="cat" />
+        <label for="cat">Cat</label><br />
+
+        <input type="radio" asp-for="SelectedAnimal" value="Bird" id="bird" />
+        <label for="bird">Bird</label><br />
+
+        <input type="radio" asp-for="SelectedAnimal" value="Fish" id="fish" />
+        <label for="fish">Fish</label><br />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+@if (!string.IsNullOrEmpty(Model?.ImagePath))
+{
+    <hr />
+    <div class="mt-4">
+        <h4>Submitted Details</h4>
+        <p><strong>Owner Name:</strong> @Model.OwnerName</p>
+        <p><strong>Pet Name:</strong> @Model.PetName</p>
+        <p><strong>Favourite Pet:</strong> @Model.SelectedAnimal</p>
+        <img src="@Model.ImagePath" alt="@Model.SelectedAnimal" style="max-width: 300px; border-radius: 8px;" />
+    </div>
+}

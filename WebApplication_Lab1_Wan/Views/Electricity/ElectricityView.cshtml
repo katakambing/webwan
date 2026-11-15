@@ -1,31 +1,53 @@
 @model WebApplication_Lab1_Wan.Models.ElectricityModel
 
-<h2>Electricity Bill Calculator</h2>
+<h3>Electricity Bill Calculator</h3>
 
-<form method="post" asp-action="ElectricityView">
-    <div>
-        <label>Units Consumed (kWh):</label><br />
-        <input asp-for="UnitsConsumed" type="number" step="0.01" />
-    </div>
-    <br />
-    <div>
-        <label>Tariff Category:</label><br />
-        <select asp-for="Category">
-            <option value="Domestic">Domestic (Residential)</option>
-            <option value="Commercial">Commercial</option>
-        </select>
-    </div>
-    <br />
-    <input type="submit" value="Calculate Bill" />
+<form asp-action="ElectricityView" method="post">
+    <p>
+        Previous reading:
+        <input asp-for="previousReading" />
+    </p>
+    <p>
+        Current reading:
+        <input asp-for="currentReading" />
+    </p>
+    <p>
+        <input type="submit" value="Calculate Bill" />
+    </p>
 </form>
 
-<br />
+<p>Previous reading: @(Model != null ? Model.previousReading.ToString() : "")</p>
+<p>Current reading: @(Model != null ? Model.currentReading.ToString() : "")</p>
 
-@if (Model != null)
-{
-    <div>
-        <h3>
-            Total Charges: RM @Model.TotalAmount.ToString("0.00")
-        </h3>
-    </div>
-}
+<table>
+    <tr>
+        <th>Tariff Block(kWh)</th>
+        <th>Unit(kWh)</th>
+        <th>Rate(RM)</th>
+        <th>Amount(RM)</th>
+    </tr>
+    <tr>
+        <td>Block 1: 0-300</td>
+        <td>@(Model != null ? Model.usageBlock1.ToString() : "")</td>
+        <td>0.30</td>
+        <td>@(Model != null ? Model.chargeBlock1.ToString() : "")</td>
+    </tr>
+    <tr>
+        <td>Block 2: 301-700</td>
+        <td>@(Model != null ? Model.usageBlock2.ToString() : "")</td>
+        <td>0.40</td>
+        <td>@(Model != null ? Model.chargeBlock2.ToString() : "")</td>
+    </tr>
+    <tr>
+        <td>Block 3: &gt;700</td>
+        <td>@(Model != null ? Model.usageBlock3.ToString() : "")</td>
+        <td>0.50</td>
+        <td>@(Model != null ? Model.chargeBlock3.ToString() : "")</td>
+    </tr>
+    <tr>
+        <td>Total</td>
+        <td>@(Model != null ? Model.usage.ToString() : "")</td>
+        <td></td>
+        <td>@(Model != null ? Model.totalCharge.ToString() : "")</td>
+    </tr>
+</table>

@@ -2,35 +2,45 @@ namespace WebApplication_Lab1_Wan.Models
 {
     public class ElectricityModel
     {
-        public double UnitsConsumed { get; set; }
-        public string Category { get; set; } = "Domestic";
-        public double TotalAmount { get; set; }
+        public double previousReading { get; set; }
+        public double currentReading { get; set; }
+        public double usage { get; set; }
+        public double chargeBlock1 { get; set; }
+        public double chargeBlock2 { get; set; }
+        public double chargeBlock3 { get; set; }
+        public double usageBlock1 { get; set; }
+        public double usageBlock2 { get; set; }
+        public double usageBlock3 { get; set; }
+        public double totalCharge { get; set; }
 
-        public void CalculateBill()
+        public void CalculateUsage()
         {
-            double rate = 0.0;
+            usage = currentReading - previousReading;
 
-            if (Category == "Commercial")
+            if (usage <= 300)
             {
-                rate = 0.50;
+                usageBlock1 = usage;
+                chargeBlock1 = usage * 0.30;
+                totalCharge = chargeBlock1;
             }
-            else
+            else if (300 < usage && usage <= 700)
             {
-                if (UnitsConsumed <= 200)
-                {
-                    rate = 0.218;
-                }
-                else if (UnitsConsumed <= 300)
-                {
-                    rate = 0.334;
-                }
-                else
-                {
-                    rate = 0.516;
-                }
+                usageBlock1 = 300;
+                usageBlock2 = usage - 300;
+                chargeBlock1 = 300 * 0.30;
+                chargeBlock2 = (usage - 300) * 0.40;
+                totalCharge = chargeBlock1 + chargeBlock2;
             }
-
-            TotalAmount = UnitsConsumed * rate;
+            else if (usage > 700)
+            {
+                usageBlock1 = 300;
+                usageBlock2 = 400;
+                usageBlock3 = usage - 700;
+                chargeBlock1 = 300 * 0.30;
+                chargeBlock2 = 400 * 0.40;
+                chargeBlock3 = (usage - 700) * 0.50;
+                totalCharge = chargeBlock1 + chargeBlock2 + chargeBlock3;
+            }
         }
     }
 }

@@ -2,19 +2,29 @@ namespace WebApplication_Lab1_Wan.Models
 {
     public class TempModel
     {
-        public double Temperature { get; set; }
-        public double Result { get; set; }
-        public string ConversionType { get; set; } = "CtoF";
+        public double Celsius { get; set; }
+        public double Fahrenheit { get; set; }
+        public string Status { get; set; } = "";
+        public string Color { get; set; } = "";
 
-        public void ConvertTemperature()
+        public void CalculateTemperature()
         {
-            if (ConversionType == "FtoC")
+            Fahrenheit = (Celsius * 9 / 5) + 32;
+
+            if (Celsius < 35)
             {
-                Result = (Temperature - 32) * 5 / 9;
+                Status = "Low body temperature";
+                Color = "Blue";
             }
-            else if (ConversionType == "CtoF")
+            else if (Celsius > 37)
             {
-                Result = (Temperature * 9 / 5) + 32;
+                Status = "You have fever!";
+                Color = "Red";
+            }
+            else
+            {
+                Status = "Normal body temperature";
+                Color = "Green";
             }
         }
     }

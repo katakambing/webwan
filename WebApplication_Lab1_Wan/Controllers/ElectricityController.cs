@@ -14,7 +14,7 @@ namespace WebApplication_Lab1_Wan.Controllers
         [HttpPost]
         public IActionResult ElectricityView(ElectricityModel model)
         {
-            model.CalculateBill();
+            model.CalculateUsage();
             return View(model);
         }
     }
