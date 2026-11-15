@@ -3,12 +3,11 @@
 <form asp-action="FavouritePetView" method="post">
     <p>
         Please select your favourite pet:<br /><br />
-        <select name="pet" size="6" required>
+        <select name="pet" size="5" required>
             <option value="bird" selected="@(ViewBag.pet == "bird")">Bird</option>
             <option value="cat" selected="@(ViewBag.pet == "cat")">Cat</option>
             <option value="dog" selected="@(ViewBag.pet == "dog")">Dog</option>
             <option value="fish" selected="@(ViewBag.pet == "fish")">Fish</option>
-            <option value="lizard" selected="@(ViewBag.pet == "lizard")">Lizard</option>
             <option value="rabbit" selected="@(ViewBag.pet == "rabbit")">Rabbit</option>
         </select>
     </p>
