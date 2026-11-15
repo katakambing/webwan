@@ -9,7 +9,9 @@ namespace WebApplication_Lab1_Wan.Models
         {
             if (!string.IsNullOrEmpty(SelectedAnswer))
             {
-                ResultMessage = $"You selected: {SelectedAnswer}";
+                ResultMessage = SelectedAnswer == "c"
+                    ? "Correct! C# is a server-side programming language."
+                    : "Incorrect. Try again!";
             }
         }
     }
