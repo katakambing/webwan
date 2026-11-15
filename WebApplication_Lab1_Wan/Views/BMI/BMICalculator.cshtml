@@ -1,21 +1,19 @@
 @model WebApplication_Lab1_Wan.Models.BMI
 
-@{
-    ViewData["Title"] = "BMI Calculator";
-}
-
 <h2>BMI Calculator</h2>
 
 <form asp-action="BMICalculator" method="post">
-    <div class="mb-3">
-        <label asp-for="Weight" class="form-label">Weight (kg):</label>
-        <input asp-for="Weight" type="number" step="any" class="form-control" style="max-width: 350px;" required />
+    <div>
+        <label asp-for="Weight">Weight (kg):</label><br />
+        <input asp-for="Weight" type="number" step="any" required />
     </div>
-    <div class="mb-3">
-        <label asp-for="Height" class="form-label">Height (meters, e.g. 1.75 or cm e.g. 175):</label>
-        <input asp-for="Height" type="number" step="any" class="form-control" style="max-width: 350px;" required />
+    <br />
+    <div>
+        <label asp-for="Height">Height (meters, e.g. 1.75):</label><br />
+        <input asp-for="Height" type="number" step="any" required />
     </div>
-    <button type="submit" class="btn btn-primary">Calculate BMI</button>
+    <br />
+    <button type="submit">Calculate BMI</button>
 </form>
 
 <br />

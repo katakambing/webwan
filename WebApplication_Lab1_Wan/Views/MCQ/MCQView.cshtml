@@ -1,49 +1,25 @@
 @model WebApplication_Lab1_Wan.Models.MCQModel
 
-@{
-    ViewData["Title"] = "Multiple Choice Question App";
-}
-
 <h3>Multiple Choice Question App</h3>
 
 <form method="post" asp-action="MCQView">
-    <div class="mb-3">
-        <p><strong>Which of the following is a server-side programming language?</strong></p>
-
-        <div class="form-check">
-            <input class="form-check-input" type="radio" asp-for="SelectedAnswer" value="a" id="optA" />
-            <label class="form-check-label" for="optA">HTML</label>
-        </div>
-
-        <div class="form-check">
-            <input class="form-check-input" type="radio" asp-for="SelectedAnswer" value="b" id="optB" />
-            <label class="form-check-label" for="optB">JavaScript</label>
-        </div>
-
-        <div class="form-check">
-            <input class="form-check-input" type="radio" asp-for="SelectedAnswer" value="c" id="optC" />
-            <label class="form-check-label" for="optC">C#</label>
-        </div>
-
-        <div class="form-check">
-            <input class="form-check-input" type="radio" asp-for="SelectedAnswer" value="d" id="optD" />
-            <label class="form-check-label" for="optD">CSS</label>
-        </div>
-
-        <div class="form-check">
-            <input class="form-check-input" type="radio" asp-for="SelectedAnswer" value="e" id="optE" />
-            <label class="form-check-label" for="optE">AJAX</label>
-        </div>
-    </div>
-
-    <input type="submit" value="Submit Answer" class="btn btn-primary" />
+    <p>
+        Which of the following is a server-side programming language?<br />
+        <input type="radio" asp-for="SelectedAnswer" value="a" /> HTML <br />
+        <input type="radio" asp-for="SelectedAnswer" value="b" /> JavaScript <br />
+        <input type="radio" asp-for="SelectedAnswer" value="c" /> C# <br />
+        <input type="radio" asp-for="SelectedAnswer" value="d" /> CSS <br />
+        <input type="radio" asp-for="SelectedAnswer" value="e" /> AJAX <br />
+    </p>
+    <input type="submit" value="submit answer" />
 </form>
 
 <br />
+
 @if (Model != null && !string.IsNullOrEmpty(Model.SelectedAnswer))
 {
-    <div class="alert @(Model.SelectedAnswer == "c" ? "alert-success" : "alert-warning")" style="max-width: 450px;">
-        <p class="mb-1">Selected item value: <strong>@Model.SelectedAnswer</strong></p>
-        <p class="mb-0"><strong>@Model.ResultMessage</strong></p>
-    </div>
+    <p>
+        Selected item value: @Model.SelectedAnswer <br />
+        @Model.ResultMessage
+    </p>
 }

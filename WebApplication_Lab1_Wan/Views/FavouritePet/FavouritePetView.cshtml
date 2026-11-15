@@ -1,13 +1,9 @@
-@{
-    ViewData["Title"] = "Favourite Pet";
-}
-
 <h3>Favourite Pet Application</h3>
 
 <form asp-action="FavouritePetView" method="post">
-    <div class="mb-3">
-        <label class="form-label">Please select your favourite pet:</label><br />
-        <select name="pet" size="6" class="form-select" style="max-width: 350px;" required>
+    <p>
+        Please select your favourite pet:<br /><br />
+        <select name="pet" size="6" required>
             <option value="bird" selected="@(ViewBag.pet == "bird")">Bird</option>
             <option value="cat" selected="@(ViewBag.pet == "cat")">Cat</option>
             <option value="dog" selected="@(ViewBag.pet == "dog")">Dog</option>
@@ -15,31 +11,29 @@
             <option value="lizard" selected="@(ViewBag.pet == "lizard")">Lizard</option>
             <option value="rabbit" selected="@(ViewBag.pet == "rabbit")">Rabbit</option>
         </select>
-    </div>
+    </p>
 
-    <div class="mb-3">
-        <label class="form-label">Select image size:</label><br />
-        <select name="size" class="form-select" style="max-width: 350px;">
-            <option value="50" selected="@(ViewBag.size == "50")">Extra Small (50px)</option>
-            <option value="100" selected="@(ViewBag.size == "100")">Small (100px)</option>
-            <option value="150" selected="@(ViewBag.size == null || ViewBag.size == "150")">Medium (150px)</option>
-            <option value="200" selected="@(ViewBag.size == "200")">Large (200px)</option>
-            <option value="250" selected="@(ViewBag.size == "250")">Extra Large (250px)</option>
+    <p>
+        Select image size:<br /><br />
+        <select name="size">
+            <option value="50" selected="@(ViewBag.size == "50")">Extra Small</option>
+            <option value="100" selected="@(ViewBag.size == "100")">Small</option>
+            <option value="150" selected="@(ViewBag.size == null || ViewBag.size == "150")">Medium</option>
+            <option value="200" selected="@(ViewBag.size == "200")">Large</option>
+            <option value="250" selected="@(ViewBag.size == "250")">Extra Large</option>
         </select>
-    </div>
+    </p>
 
-    <input type="submit" value="Submit" class="btn btn-primary" />
+    <input type="submit" value="Submit" />
 </form>
 
 <br />
-<div>
-    @if (ViewBag.pet != null)
-    {
-        <p>You selected: <strong>@ViewBag.pet</strong></p>
-        <img src="~/img/@(ViewBag.pet).png" height="@ViewBag.size" alt="@ViewBag.pet" class="rounded border p-1" />
-    }
-    else
-    {
-        <img src="~/img/pet.png" height="150" alt="Favourite Pet" class="rounded border p-1" />
-    }
-</div>
+
+@if (ViewBag.pet != null)
+{
+    <img src="~/img/@(ViewBag.pet).png" height="@ViewBag.size" alt="@ViewBag.pet" />
+}
+else
+{
+    <img src="~/img/pet.png" height="150" alt="Favourite Pet" />
+}
